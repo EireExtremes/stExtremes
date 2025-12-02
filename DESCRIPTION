@@ -1,0 +1,44 @@
+Package: stExtremes
+Title: What the Package Does (One Line, Title Case)
+Version: 0.1-0
+Authors@R:
+    c(person("Fernando", "Mayer", , "fernando.mayer@mu.ie", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-5115-338X")),
+      person("Niamh", "Cahill", , "niamh.cahill@mu.ie", role = c("aut"),
+           comment = c(ORCID = "0000-0003-3086-550X")))
+Description: What the package does (one paragraph).
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Additional_repositories: https://inla.r-inla-download.org/R/testing/
+Imports:
+    data.table,
+    dplyr,
+    fmesher,
+    forcats,
+    geslaR,
+    ggplot2,
+    INLA,
+    inlabru,
+    parallel,
+    purrr,
+    sf,
+    tibble,
+    tidyr,
+    tidyverse,
+    viridis
+Depends:
+    R (>= 4.1.0)
+LazyData: true
+LazyDataCompression: xz
+Suggests:
+    gganimate,
+    gifski,
+    knitr,
+    leaflet,
+    leafpop,
+    rmarkdown,
+    tictoc,
+    TideHarmonics
+VignetteBuilder: quarto

@@ -1,21 +1,32 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 
 # stExtremes
 
 Tools for spatio-temporal modelling of sea-level extremes with INLA.
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
-The goal of stExtremes is to …
+The goal of stExtremes is to ...
 
 ## Installation
 
 You can install the development version of stExtremes with:
 
-``` r
+```{r eval=F}
 ## install.packages("devtools")
 devtools::install_github("EireExtremes/stExtremes")
 ## Or
@@ -31,4 +42,6 @@ This work has emanated from research conducted with the financial
 support of Science Foundation Ireland and co-funded by GSI under Grant
 number 20/FFP-P/8610.
 
-<img src="man/figures/logos2.png" width="100%" />
+```{r fig, echo=FALSE}
+knitr::include_graphics("man/figures/logos2.png")
+```
