@@ -11,48 +11,48 @@ library(rnaturalearthdata)
 proj <- st_crs("+proj=longlat +datum=WGS84")
 
 ## Get country polygons at high resolution
-shp_roi <- ne_countries(country = "ireland",
+map_roi <- ne_countries(country = "ireland",
     scale = "large",
     returnclass = "sf") |>
     st_transform(crs = proj)
 
-shp_gbr <- ne_countries(country = "united kingdom",
+map_gbr <- ne_countries(country = "united kingdom",
     scale = "large",
     returnclass = "sf") |>
     st_transform(crs = proj)
 
-shp_imn <- ne_countries(country = "isle of man",
+map_imn <- ne_countries(country = "isle of man",
     scale = "large",
     returnclass = "sf") |>
     st_transform(crs = proj)
 
 ## Join GBR and IMN
-shp_gbr <- st_union(st_geometry(shp_gbr), st_geometry(shp_imn)) |>
+map_gbr <- st_union(st_geometry(map_gbr), st_geometry(map_imn)) |>
     st_as_sf()
 
 ## Join ROI and GBR
-shp_all <- st_union(st_geometry(shp_roi), st_geometry(shp_gbr)) |>
+map_all <- st_union(st_geometry(map_roi), st_geometry(map_gbr)) |>
     st_as_sf() |>
     st_make_valid()
 
 ## Plot to verify
 ggplot() +
-    geom_sf(data = shp_all)
+    geom_sf(data = map_all)
 
 
 ##----------------------------------------------------------------------
 ## Save
 (fl <- "data/map_roi.rda")
 if(!file.exists(fl)) {
-    save(shp_roi, file = fl, compress = "xz")
+    save(map_roi, file = fl, compress = "xz")
 }
 
 (fl <- "data/map_gbr.rda")
 if(!file.exists(fl)) {
-    save(shp_gbr, file = fl, compress = "xz")
+    save(map_gbr, file = fl, compress = "xz")
 }
 
 (fl <- "data/map_all.rda")
 if(!file.exists(fl)) {
-    save(shp_all, file = fl, compress = "xz")
+    save(map_all, file = fl, compress = "xz")
 }
