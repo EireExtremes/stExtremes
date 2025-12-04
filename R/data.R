@@ -5,6 +5,13 @@
 #' @format An \code{sf} object from \code{rnaturalearth}
 "map_roi"
 
+#' Map of Republic of Ireland and Northern Ireland
+#'
+#' A map of Republic of Ireland and Northern Ireland
+#'
+#' @format An \code{sf} object from \code{rnaturalearth}
+"map_irl"
+
 #' Map of Great Britain
 #'
 #' A map of Great Britain
