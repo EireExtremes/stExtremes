@@ -10,6 +10,8 @@ tri_on_mesh(mesh, polygon, inverse = FALSE)
 \item{mesh}{An \code{inla.mesh} object}
 
 \item{polygon}{A \code{sf} object}
+
+\item{inverse}{Make the opposite operation}
 }
 \value{
 A vector of integers indicating the triangles that are

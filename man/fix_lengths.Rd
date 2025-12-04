@@ -25,3 +25,4 @@ variables, an error is thrown. The variables are modified in place.
 \author{
 Daniela Castro-Camilo
 }
+\keyword{internal}

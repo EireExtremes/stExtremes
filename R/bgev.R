@@ -5,6 +5,16 @@
 ## NOTE see how to cite this properly in de docs
 ##==============================================================================
 
+##' Internal GEV helpers
+##'
+##' Random generation, density, distribution and related functions for the GEV
+##' distribution. These are exported primarily for use by other packages and
+##' advanced users, and are not part of the stable user-facing API.
+##'
+##' @keywords internal
+##' @name gev_internals
+NULL
+
 ##==============================================================================
 ## Copy of bGEV/Code/utils.R
 
@@ -13,7 +23,8 @@
 #################################################
 # By Silius M.V. and Daniela C.C.
 
-##' @noRd
+##' @keywords internal
+##' @rdname gev_internals
 ##' @export
 new_to_old = function(par, alpha = 0.5, beta = 0.5){
     q = par[1]
@@ -38,7 +49,8 @@ new_to_old = function(par, alpha = 0.5, beta = 0.5){
     list(mu = mu, sigma = sigma, xi = xi)
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 old_to_new = function(par, alpha = 0.5, beta = 0.5){
     mu    = par[1]
@@ -65,6 +77,7 @@ old_to_new = function(par, alpha = 0.5, beta = 0.5){
 ##' @return The function returns 0 invisibly.
 ##' @author Daniela Castro-Camilo
 ##'
+##' @keywords internal
 ##' @export
 fix_lengths <- function(...) {
     call = match.call()
@@ -93,7 +106,8 @@ fix_lengths <- function(...) {
 ##################################################
 # By Silius M.V. and Daniela C.C.
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 ##' @importFrom stats pbeta
 pbgev = function(x, mu, sigma, xi, p_a = .1, p_b = .2, s = 5) {
@@ -106,7 +120,8 @@ pbgev = function(x, mu, sigma, xi, p_a = .1, p_b = .2, s = 5) {
     pgev(x, mu, sigma, xi) ^ p * pgev(x, g$mu, g$sigma, 0) ^ (1 - p)
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 qbgev = function(p, mu, sigma, xi, p_a = .1, p_b = .2, s = 5) {
     # Quantile function
@@ -131,7 +146,8 @@ qbgev = function(p, mu, sigma, xi, p_a = .1, p_b = .2, s = 5) {
     res
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 ##' @importFrom stats runif
 rbgev = function(n, mu, sigma, xi, p_a = .1, p_b = .2, s = 5) {
@@ -141,7 +157,8 @@ rbgev = function(n, mu, sigma, xi, p_a = .1, p_b = .2, s = 5) {
     qbgev(runif(n), mu, sigma, xi, p_a, p_b, s)
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 dbgev = function(x, mu, sigma, xi, p_a = .1, p_b = .2, s = 5, log = FALSE) {
     # Density using the usual parametrisation
@@ -168,7 +185,8 @@ dbgev = function(x, mu, sigma, xi, p_a = .1, p_b = .2, s = 5, log = FALSE) {
     res
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 dbgev2 = function(x, q, sb, xi, alpha = 0.5, beta = 0.5, p_a = .1, p_b = .2,
                   s = 5, log = FALSE) {
@@ -199,7 +217,8 @@ dbgev2 = function(x, q, sb, xi, alpha = 0.5, beta = 0.5, p_a = .1, p_b = .2,
     res
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 return_level_bgev = function(period, mu, sigma, xi, p_a = .1, p_b = .2,
                              s = 5) {
@@ -209,7 +228,8 @@ return_level_bgev = function(period, mu, sigma, xi, p_a = .1, p_b = .2,
     qbgev(p, mu, sigma, xi, p_a, p_b, s)
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 ##' @importFrom stats pbeta dbeta
 dbgev_mixing = function(x, mu, sigma, xi, p_a = .1, p_b = .2,
@@ -232,7 +252,8 @@ dbgev_mixing = function(x, mu, sigma, xi, p_a = .1, p_b = .2,
     res
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 ##' @importFrom stats uniroot
 qbgev_mixing = function(p, mu, sigma, xi, p_a = .1, p_b = .2, s = 5,
@@ -248,7 +269,8 @@ qbgev_mixing = function(p, mu, sigma, xi, p_a = .1, p_b = .2, s = 5,
     res
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 get_gumbel_par = function(mu, sigma, xi, p_a = .1, p_b = .2) {
     # Tool function to get parameters for G (Gumbel)
@@ -271,7 +293,8 @@ get_gumbel_par = function(mu, sigma, xi, p_a = .1, p_b = .2) {
 #################################################
 # By Silius M.V. and Daniela C.C.
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 pgev = function(x, mu, sigma, xi) {
     # PDF
@@ -281,8 +304,8 @@ pgev = function(x, mu, sigma, xi) {
         exp(-pmax(0, 1 + xi * (x - mu) / sigma) ^ (-1 / xi)))
 }
 
-
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 qgev = function(p, mu, sigma, xi) {
     # Quantile function
@@ -293,8 +316,9 @@ qgev = function(p, mu, sigma, xi) {
         mu - sigma * (1 / xi) * (1 - (- log(p)) ^ (-xi)))
 }
 
-##' @noRd
+##' @rdname gev_internals
 ##' @export
+##' @keywords internal
 ##' @importFrom stats runif
 rgev = function(n, mu, sigma, xi) {
     # Random generation
@@ -303,7 +327,8 @@ rgev = function(n, mu, sigma, xi) {
     qgev(runif(n), mu, sigma, xi)
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 dgev = function(x, mu, sigma, xi, log = FALSE) {
     # Density using the usual parametrisation
@@ -321,7 +346,8 @@ dgev = function(x, mu, sigma, xi, log = FALSE) {
     res
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 dgev2 = function(x, q, sb, xi, alpha = 0.5, beta = 0.5, log = FALSE) {
     # Density using the new parametrisation
@@ -341,7 +367,8 @@ dgev2 = function(x, q, sb, xi, alpha = 0.5, beta = 0.5, log = FALSE) {
     res
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 return_level_gev = function(period, mu, sigma, xi) {
     # Return levels
@@ -363,7 +390,8 @@ return_level_gev = function(period, mu, sigma, xi) {
 #############################################################################
 # By Daniela C.C.
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 nllik_gev = function(par, x, log = TRUE){
     # Neg log-lik of GEV using classical parametrisation
@@ -376,7 +404,8 @@ nllik_gev = function(par, x, log = TRUE){
     -sum(ll)
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 nllik_bgev = function(par, x, p_a, p_b, s, log = TRUE){
     # Neg log-lik of bGEV using classical parametrisation
@@ -394,7 +423,8 @@ nllik_bgev = function(par, x, p_a, p_b, s, log = TRUE){
     }
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 nllik_gevx = function(par, x, w, log = TRUE){
     # Neg log-lik of GEV using classical parametrisation with
@@ -410,7 +440,8 @@ nllik_gevx = function(par, x, w, log = TRUE){
     -sum(ll)
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 nllik_bgevx = function(par, x, w, p_a, p_b, s, log = TRUE){
     # Neg log-lik of bGEV using classical parametrisation with
@@ -431,7 +462,8 @@ nllik_bgevx = function(par, x, w, p_a, p_b, s, log = TRUE){
     }
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 nllik_gev2 = function(par, x, alpha = 0.5, beta = 0.5, log = TRUE){
     # Neg log-lik of GEV using new parametrisation
@@ -449,7 +481,8 @@ nllik_gev2 = function(par, x, alpha = 0.5, beta = 0.5, log = TRUE){
     }
 }
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 nllik_bgev2 = function(par, x, alpha = 0.5, beta = 0.5, p_a, p_b,
                        s, log = TRUE){
@@ -475,7 +508,8 @@ nllik_bgev2 = function(par, x, alpha = 0.5, beta = 0.5, p_a, p_b,
 ##==============================================================================
 ## Copy of bGEV/Pollution_California/utilsBakersfield.R
 
-##' @noRd
+##' @rdname gev_internals
+##' @keywords internal
 ##' @export
 map_tail = function(x, interval, inverse = FALSE) {
     ## Utility function to define hyper for tail

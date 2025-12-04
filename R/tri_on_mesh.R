@@ -11,6 +11,7 @@
 ##'
 ##' @param mesh An \code{inla.mesh} object
 ##' @param polygon A \code{sf} object
+##' @param inverse Make the opposite operation
 ##'
 ##' @return A vector of integers indicating the triangles that are
 ##' within the polygon and a \code{tibble} with the centroids of the
