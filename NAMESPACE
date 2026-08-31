@@ -38,6 +38,7 @@ export(qbgev_mixing)
 export(qgev)
 export(rbgev)
 export(return_level_bgev)
+export(return_level_bgev2)
 export(return_level_gev)
 export(rgev)
 export(sfield)
@@ -51,22 +52,28 @@ import(sf)
 import(tibble)
 import(tidyr)
 import(tidyverse)
-importFrom(INLA,inla.hpdmarginal)
-importFrom(INLA,inla.mesh.project)
-importFrom(INLA,inla.spde.make.index)
-importFrom(INLA,inla.stack.index)
-importFrom(INLA,inla.tmarginal)
-importFrom(INLA,inla.zmarginal)
+importFrom(INLA,
+  inla.hpdmarginal,
+  inla.mesh.project,
+  inla.spde.make.index,
+  inla.stack.index,
+  inla.tmarginal,
+  inla.zmarginal
+)
 importFrom(data.table,rbindlist)
 importFrom(forcats,fct_relevel)
 importFrom(inlabru,gg)
-importFrom(parallel,detectCores)
-importFrom(parallel,mclapply)
+importFrom(parallel,
+  detectCores,
+  mclapply
+)
 importFrom(purrr,map)
-importFrom(stats,dbeta)
-importFrom(stats,pbeta)
-importFrom(stats,runif)
-importFrom(stats,uniroot)
+importFrom(stats,
+  dbeta,
+  pbeta,
+  runif,
+  uniroot
+)
 importFrom(tibble,tibble)
 importFrom(tidyr,pivot_longer)
 importFrom(utils,head)

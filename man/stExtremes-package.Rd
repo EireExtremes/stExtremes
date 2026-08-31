@@ -13,6 +13,7 @@ What the package does (one paragraph).
 
 Authors:
 \itemize{
+  \item Fernando Mayer \email{fernando.mayer@mu.ie} (\href{https://orcid.org/0000-0001-5115-338X}{ORCID})
   \item Niamh Cahill \email{niamh.cahill@mu.ie} (\href{https://orcid.org/0000-0003-3086-550X}{ORCID})
 }
 

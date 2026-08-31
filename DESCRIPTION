@@ -10,7 +10,6 @@ Description: What the package does (one paragraph).
 License: GPL (>=3) + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 Additional_repositories: https://inla.r-inla-download.org/R/testing/
 Imports:
     data.table,
@@ -41,3 +40,4 @@ Suggests:
     rmarkdown,
     tictoc,
     TideHarmonics
+Config/roxygen2/version: 8.1.0

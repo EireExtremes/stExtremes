@@ -231,6 +231,34 @@ return_level_bgev = function(period, mu, sigma, xi, p_a = .1, p_b = .2,
 ##' @rdname gev_internals
 ##' @keywords internal
 ##' @export
+return_level_bgev2 = function(period, q, sb, xi, alpha = 0.5, beta = 0.5,
+                              p_a = .1, p_b = .2, s = 5) {
+    ## Return levels using the new (q_alpha, s_beta, xi) parametrisation.
+    ## Converts (q, sb, xi) to the classical (mu, sigma, xi) exactly as
+    ## new_to_old() does (here vectorised over q; sb and xi scalar) and then
+    ## calls qbgev. alpha and beta MUST match q.location and q.spread used in
+    ## the INLA fit; p_a, p_b and s must match control.bgev$q.mix and beta.ab.
+    if (any(period <= 1)) warning("invalid period")
+    p = ifelse(period > 1, 1 - 1 / period, NA)
+    if (xi == 0) {
+        ell1 = log(-log(alpha))
+        ell2 = log(-log(beta / 2))
+        ell3 = log(-log(1 - beta / 2))
+        sigma = sb / (ell2 - ell3)
+        mu = q + sigma * ell1
+    } else {
+        ell1 = (-log(alpha))^(-xi)
+        ell2 = (-log(beta / 2))^(-xi)
+        ell3 = (-log(1 - beta / 2))^(-xi)
+        mu = q - sb * (ell1 - 1) / (ell3 - ell2)
+        sigma = xi * sb / (ell3 - ell2)
+    }
+    qbgev(p, mu, sigma, xi, p_a, p_b, s)
+}
+
+##' @rdname gev_internals
+##' @keywords internal
+##' @export
 ##' @importFrom stats pbeta dbeta
 dbgev_mixing = function(x, mu, sigma, xi, p_a = .1, p_b = .2,
                         s = 5, log = FALSE) {

@@ -10,6 +10,7 @@
 \alias{dbgev}
 \alias{dbgev2}
 \alias{return_level_bgev}
+\alias{return_level_bgev2}
 \alias{dbgev_mixing}
 \alias{qbgev_mixing}
 \alias{get_gumbel_par}
@@ -54,6 +55,18 @@ dbgev2(
 )
 
 return_level_bgev(period, mu, sigma, xi, p_a = 0.1, p_b = 0.2, s = 5)
+
+return_level_bgev2(
+  period,
+  q,
+  sb,
+  xi,
+  alpha = 0.5,
+  beta = 0.5,
+  p_a = 0.1,
+  p_b = 0.2,
+  s = 5
+)
 
 dbgev_mixing(x, mu, sigma, xi, p_a = 0.1, p_b = 0.2, s = 5, log = FALSE)
 
