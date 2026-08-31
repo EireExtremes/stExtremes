@@ -22,6 +22,21 @@ installed from `https://inla.r-inla-download.org/R/testing/` (see
 `Additional_repositories` in `DESCRIPTION`). It also imports `geslaR`, a
 sibling package (Global Extreme Sea Level Analysis).
 
+### Role within the wider project
+
+This is deliberately a reusable, installable toolkit rather than a
+self-contained analysis: it produces no scientific findings of its own. It
+exists so that the extreme-value methods and the standardised geographic
+reference data are defined once and shared, instead of being re-implemented
+per analysis. The applied work that uses it — data pipelines, model fitting,
+and the paper — lives in a separate private development repository, which is
+also where these functions originate. Changes therefore tend to flow
+dev -> public, so when editing `R/`, check whether the change belongs
+upstream too, and keep the two copies in sync.
+
+The work is supported by Science Foundation Ireland, co-funded by GSI, under
+Grant number 20/FFP-P/8610 (see `README.Rmd`).
+
 ## Common commands
 
 Development uses the standard `devtools`/`roxygen2` workflow (devtools is
@@ -108,8 +123,8 @@ Two independent sources produce overlapping datasets — know which is
 current before adding to either:
 
 - `data-raw/maps.R` builds `map_roi`, `map_irl`, `map_gbr`, `map_all` from
-  `rnaturalearth`/`rnaturalearthdata` (no downloaded files needed,
-  preferred going forward per `chat.md`).
+  `rnaturalearth`/`rnaturalearthdata` at `scale = "large"`. This is the
+  preferred route going forward, as it needs no downloaded files.
 - `data-raw/maps-shp.R` builds `shp_all`, `shp_gbr` (and the modelling
   inputs `area`, `barrier`) from GADM shapefiles downloaded into
   `data-raw/gadm41_*_shp/`. `barrier` is the coastline/land polygon cropped
@@ -117,11 +132,20 @@ current before adding to either:
   prediction domain for the INLA mesh) — both are consumed directly by the
   SPDE mesh-building step of the modelling workflow, not just for plotting.
 
+Both routes compose the same way, so the names understate what they hold:
+the Isle of Man is unioned into `map_gbr`/`shp_gbr`, `map_irl` is the
+Republic plus Northern Ireland, and `map_all`/`shp_all` is the Republic
+unioned with Great Britain (Isle of Man included).
+
 All `data-raw/*.R` scripts guard `save()` calls with
 `if (!file.exists(fl))`, so re-running them will not overwrite existing
 `.rda` files in `data/` — delete the target file first if you need to
 regenerate one. Document new datasets via `@format`/`"name"` roxygen blocks
 in `R/data.R`.
+
+`DESCRIPTION` sets `LazyData: true`, so datasets are available on load and
+need no `@export` tag; the object saved inside each `.rda` must match its
+file name, or `document()` fails claiming the object is not exported.
 
 ## Style conventions
 
