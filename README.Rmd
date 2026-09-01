@@ -41,6 +41,16 @@ The modelling approach is described in Mayer, Mimnagh and Cahill (2026),
 for that paper are in
 [EireExtremes/stExtremes-paper](https://github.com/EireExtremes/stExtremes-paper).
 
+The GEV and bGEV functions in `R/bgev.R` are not original to this
+package. They are taken, essentially verbatim, from the reference
+implementation by Daniela Castro-Camilo and Silius M. Vandeskog at
+[dcastrocamilo/bGEV](https://github.com/dcastrocamilo/bGEV), and the
+file keeps the upstream structure and code style so that it can still be
+diffed against the original. The blended GEV itself is due to Vandeskog,
+Martino, Castro-Camilo and Rue (2022),
+<https://doi.org/10.1007/s13253-022-00500-7>; please cite that paper, and
+credit the original authors, when using those functions.
+
 ## Installation
 
 You can install the development version of stExtremes with:
