@@ -1,12 +1,26 @@
 Package: stExtremes
-Title: What the Package Does (One Line, Title Case)
+Title: Spatio-Temporal Modelling of Sea-Level Extremes with INLA
 Version: 1.0-0
 Authors@R:
     c(person("Fernando", "Mayer", , "fernando.mayer@mu.ie", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5115-338X")),
       person("Niamh", "Cahill", , "niamh.cahill@mu.ie", role = c("aut"),
            comment = c(ORCID = "0000-0003-3086-550X")))
-Description: What the package does (one paragraph).
+Description: Tools for fitting Bayesian spatio-temporal extreme-value
+    models to sea-level data with the integrated nested Laplace
+    approximation. Provides density, distribution, quantile, random
+    generation, negative log-likelihood and return-level functions for
+    the generalised extreme value (GEV) distribution and its blended
+    variant (bGEV) of Vandeskog, Martino, Castro-Camilo and Rue (2022)
+    <doi:10.1007/s13253-022-00500-7>, in both the classical
+    (location, scale, shape) and the quantile-based parametrisations.
+    Adds helpers for the stochastic partial differential equation
+    workflow in 'INLA': mesh and polygon utilities for barrier models,
+    index construction, extraction of fitted spatial fields, posterior
+    marginal summaries, and model diagnostics. Coastline and boundary
+    datasets for Ireland and Great Britain are bundled as inputs to
+    that workflow. The modelling approach is described in Mayer,
+    Mimnagh and Cahill (2026) <doi:10.1002/env.70135>.
 License: GPL (>=3) + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

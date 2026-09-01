@@ -4,9 +4,9 @@
 \name{stExtremes-package}
 \alias{stExtremes}
 \alias{stExtremes-package}
-\title{stExtremes: What the Package Does (One Line, Title Case)}
+\title{stExtremes: Spatio-Temporal Modelling of Sea-Level Extremes with INLA}
 \description{
-What the package does (one paragraph).
+Tools for fitting Bayesian spatio-temporal extreme-value models to sea-level data with the integrated nested Laplace approximation. Provides density, distribution, quantile, random generation, negative log-likelihood and return-level functions for the generalised extreme value (GEV) distribution and its blended variant (bGEV) of Vandeskog, Martino, Castro-Camilo and Rue (2022) \doi{10.1007/s13253-022-00500-7}, in both the classical (location, scale, shape) and the quantile-based parametrisations. Adds helpers for the stochastic partial differential equation workflow in 'INLA': mesh and polygon utilities for barrier models, index construction, extraction of fitted spatial fields, posterior marginal summaries, and model diagnostics. Coastline and boundary datasets for Ireland and Great Britain are bundled as inputs to that workflow. The modelling approach is described in Mayer, Mimnagh and Cahill (2026) \doi{10.1002/env.70135}.
 }
 \author{
 \strong{Maintainer}: Fernando Mayer \email{fernando.mayer@mu.ie} (\href{https://orcid.org/0000-0001-5115-338X}{ORCID})
