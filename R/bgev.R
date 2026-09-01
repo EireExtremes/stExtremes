@@ -1,8 +1,16 @@
 ##================================================================================
 ## All functions here were extracted from
 ## https://github.com/dcastrocamilo/bGEV/tree/master
-## and were developed by Daniela Castro-Camilo
-## NOTE see how to cite this properly in de docs
+## and were developed by Daniela Castro-Camilo and Silius M. Vandeskog.
+##
+## Cite the blended GEV as: Vandeskog, S. M., Martino, S.,
+## Castro-Camilo, D. and Rue, H. (2022). Modelling sub-daily
+## precipitation extremes with the blended generalised extreme value
+## distribution. Journal of Agricultural, Biological, and Environmental
+## Statistics 27(4), 598-621. doi:10.1007/s13253-022-00500-7
+##
+## The same attribution is in the README, which is where anyone
+## arriving at the repository will look for it.
 ##==============================================================================
 
 ##' Internal GEV helpers
