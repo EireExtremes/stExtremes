@@ -1,6 +1,6 @@
 Package: stExtremes
 Title: What the Package Does (One Line, Title Case)
-Version: 0.1-0
+Version: 1.0-0
 Authors@R:
     c(person("Fernando", "Mayer", , "fernando.mayer@mu.ie", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5115-338X")),
